@@ -1,7 +1,7 @@
 # Create-music-Library-with-Postgre-Python
 
 
-![Test Image 1](star_schema.png)
+
 
 # Data Modeling With Python - PostgreSQL
 
