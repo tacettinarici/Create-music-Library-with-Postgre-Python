@@ -63,11 +63,20 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-        songplay_data = (index,row.timestamp, row.userId, row.level, songid, artistid,
-                         row.sessionId, row.location, row.userAgent)
+        songplay_data = (index,row.timestamp, row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
+        
+        
+        
+        
+        #CREATE SEQUENCE tablename_colname_seq;
+        #CREATE TABLE tablename (
+         #   colname integer NOT NULL DEFAULT nextval('tablename_colname_seq'));
+        #ALTER SEQUENCE tablename_colname_seq OWNED BY tablename.colname;        
 
-
+        
+        
+        
 def process_data(cur, conn, filepath, func):
     # get all files matching extension from directory
     all_files = []

@@ -32,7 +32,7 @@ user_table_create = ("""
 
 song_table_create = ("""
     CREATE TABLE IF NOT EXISTS songs
-    (song_id text PRIMARY KEY, 
+    (song_id text NOT NULL PRIMARY KEY, 
     title text NOT NULL, 
     artist_id text NOT NULL REFERENCES artists(artist_id), 
     year int, 
@@ -41,7 +41,7 @@ song_table_create = ("""
 
 artist_table_create = ("""
     CREATE TABLE IF NOT EXISTS artists
-    (artist_id text PRIMARY KEY,
+    (artist_id text NOT NULL PRIMARY KEY,
      name text NOT NULL, 
      location text, 
      lattitude float, 
@@ -72,7 +72,7 @@ user_table_insert = ("""
     INSERT INTO users
     (user_id, first_name, last_name, gender, level)
     VALUES (%s, %s, %s, %s, %s)
-    ON CONFLICT (user_id) DO NOTHING;
+    ON CONFLICT (user_id) DO UPDATE SET level=EXCLUDED.level;
 """)
 
 song_table_insert = ("""
